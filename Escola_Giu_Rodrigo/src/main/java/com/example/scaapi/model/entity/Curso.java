@@ -24,4 +24,7 @@ public class Curso implements ICurso {
     @JsonIgnore
     @OneToMany(mappedBy = "curso")
     private List<Disciplina> disciplinas;
+
+    @ManyToOne
+    private Coordernador coordernador;
 }
