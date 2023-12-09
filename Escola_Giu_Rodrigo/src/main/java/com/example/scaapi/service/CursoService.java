@@ -42,6 +42,10 @@ public class CursoService {
         if (curso.getNome() == null || curso.getNome().trim().equals("")) {
             throw new RegraNegocioException("Nome inválido");
         }
+
+        if (curso.getCoordenador() == null || curso.getCoordenador().getId() == null || curso.getCoordenador().getId() == 0) {
+            throw new RegraNegocioException("Coordenador inválido");
+        }
         return "Curso valida";
     }
 }
