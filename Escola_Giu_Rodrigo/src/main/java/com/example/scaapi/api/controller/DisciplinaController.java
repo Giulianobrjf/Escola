@@ -40,7 +40,7 @@ public class DisciplinaController {
     }
 
     @PostMapping()
-    public ResponseEntity post(DisciplinaDTO dto) {
+    public ResponseEntity post(@RequestBody DisciplinaDTO dto) {
         try {
             Disciplina disciplina = converter(dto);
             disciplina = service.salvar(disciplina);
@@ -50,7 +50,7 @@ public class DisciplinaController {
         }
     }
     @PutMapping("{id}")
-    public ResponseEntity atualizar(@PathVariable("id") Long id, DisciplinaDTO dto) {
+    public ResponseEntity atualizar(@PathVariable("id") Long id, @RequestBody DisciplinaDTO dto) {
         if (!service.getDisciplinaById(id).isPresent()) {
             return new ResponseEntity("Disciplina não encontrada", HttpStatus.NOT_FOUND);
         }

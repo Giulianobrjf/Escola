@@ -8,8 +8,6 @@ import org.modelmapper.ModelMapper;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-
 public class CursoDTO {
     private Long id;
     private String nome;

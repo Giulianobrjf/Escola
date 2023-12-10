@@ -39,7 +39,7 @@ public class CoordenadorController {
     }
 
     @PostMapping()
-    public ResponseEntity post(CoordenadorDTO dto) {
+    public ResponseEntity post(@RequestBody CoordenadorDTO dto) {
         try {
             Coordenador coordenador = converter(dto);
             coordenador = service.salvar(coordenador);
@@ -50,7 +50,7 @@ public class CoordenadorController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity atualizar(@PathVariable("id") Long id, CoordenadorDTO dto) {
+    public ResponseEntity atualizar(@PathVariable("id") Long id, @RequestBody CoordenadorDTO dto) {
         if (!service.getCoordenadorById(id).isPresent()) {
             return new ResponseEntity("Coordenador não encontrado", HttpStatus.NOT_FOUND);
         }
