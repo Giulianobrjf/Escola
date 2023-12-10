@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 public class CursoDTO {
     private Long id;
     private String nome;
+    private Long idCoordenador;
 
     public static CursoDTO create(Curso curso) {
         ModelMapper modelMapper = new ModelMapper();
