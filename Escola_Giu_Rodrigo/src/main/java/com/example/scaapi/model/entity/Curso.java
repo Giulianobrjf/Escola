@@ -26,5 +26,5 @@ public class Curso implements ICurso {
     private List<Disciplina> disciplinas;
 
     @ManyToOne
-    private Coordernador coordernador;
+    private Coordenador coordenador;
 }

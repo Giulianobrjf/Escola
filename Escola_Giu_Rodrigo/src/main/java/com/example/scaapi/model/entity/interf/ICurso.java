@@ -1,9 +1,9 @@
 package com.example.scaapi.model.entity.interf;
 
-import com.example.scaapi.model.entity.Coordernador;
+import com.example.scaapi.model.entity.Coordenador;
 
 public interface ICurso {
     public String getNome();
 
-    public Coordernador getCoordenador();
+    public Coordenador getCoordenador();
 }

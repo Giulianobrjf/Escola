@@ -1,7 +1,6 @@
 package com.example.scaapi.api.dto;
 
-import com.example.scaapi.model.entity.Coordernador;
-import com.example.scaapi.model.entity.Professor;
+import com.example.scaapi.model.entity.Coordenador;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,9 +16,9 @@ public class CoordenadorDTO {
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
 
-    public static CoordenadorDTO create(Coordernador coordernador) {
+    public static CoordenadorDTO create(Coordenador coordenador) {
         ModelMapper modelMapper = new ModelMapper();
 
-        return modelMapper.map(coordernador, CoordenadorDTO.class);
+        return modelMapper.map(coordenador, CoordenadorDTO.class);
     }
 }

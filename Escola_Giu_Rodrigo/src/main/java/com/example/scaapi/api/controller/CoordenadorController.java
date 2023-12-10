@@ -2,7 +2,7 @@ package com.example.scaapi.api.controller;
 
 import com.example.scaapi.api.dto.CoordenadorDTO;
 import com.example.scaapi.exception.RegraNegocioException;
-import com.example.scaapi.model.entity.Coordernador;
+import com.example.scaapi.model.entity.Coordenador;
 import com.example.scaapi.service.CoordenadorService;
 import com.example.scaapi.service.CursoService;
 import lombok.RequiredArgsConstructor;
@@ -25,25 +25,25 @@ public class CoordenadorController {
 
     @GetMapping()
     public ResponseEntity get() {
-        List<Coordernador> coordernadores = service.getCoordenadores();
-        return ResponseEntity.ok(coordernadores.stream().map(CoordenadorDTO::create).collect(Collectors.toList()));
+        List<Coordenador> coordenadores = service.getCoordenadores();
+        return ResponseEntity.ok(coordenadores.stream().map(CoordenadorDTO::create).collect(Collectors.toList()));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
-        Optional<Coordernador> coordernador = service.getCoordenadorById(id);
-        if (!coordernador.isPresent()) {
+        Optional<Coordenador> coordenador = service.getCoordenadorById(id);
+        if (!coordenador.isPresent()) {
             return new ResponseEntity("Coordenador não encontrado", HttpStatus.NOT_FOUND);
         }
-        return ResponseEntity.ok(coordernador.map(CoordenadorDTO::create));
+        return ResponseEntity.ok(coordenador.map(CoordenadorDTO::create));
     }
 
     @PostMapping()
     public ResponseEntity post(CoordenadorDTO dto) {
         try {
-            Coordernador coordernador = converter(dto);
-            coordernador = service.salvar(coordernador);
-            return new ResponseEntity(coordernador, HttpStatus.CREATED);
+            Coordenador coordenador = converter(dto);
+            coordenador = service.salvar(coordenador);
+            return new ResponseEntity(coordenador, HttpStatus.CREATED);
         } catch (RegraNegocioException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -55,10 +55,10 @@ public class CoordenadorController {
             return new ResponseEntity("Coordenador não encontrado", HttpStatus.NOT_FOUND);
         }
         try {
-            Coordernador coordernador = converter(dto);
-            coordernador.setId(id);
-            service.salvar(coordernador);
-            return ResponseEntity.ok(coordernador);
+            Coordenador coordenador = converter(dto);
+            coordenador.setId(id);
+            service.salvar(coordenador);
+            return ResponseEntity.ok(coordenador);
         } catch (RegraNegocioException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -66,22 +66,22 @@ public class CoordenadorController {
 
     @DeleteMapping("{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
-        Optional<Coordernador> coordernador = service.getCoordenadorById(id);
-        if (!coordernador.isPresent()) {
+        Optional<Coordenador> coordenador = service.getCoordenadorById(id);
+        if (!coordenador.isPresent()) {
             return new ResponseEntity("Professor não encontrado", HttpStatus.NOT_FOUND);
         }
         try {
-            service.excluir(coordernador.get());
+            service.excluir(coordenador.get());
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         } catch (RegraNegocioException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    public Coordernador converter(CoordenadorDTO dto) {
+    public Coordenador converter(CoordenadorDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
-        Coordernador coordernador = modelMapper.map(dto, Coordernador.class);
+        Coordenador coordenador = modelMapper.map(dto, Coordenador.class);
 
-        return coordernador;
+        return coordenador;
     }
 }
