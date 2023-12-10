@@ -44,7 +44,7 @@ public class AlunoController {
     }
 
     @PostMapping()
-    public ResponseEntity post(AlunoDTO dto) {
+    public ResponseEntity post(@RequestBody AlunoDTO dto) {
         try {
             Aluno aluno = converter(dto);
             Endereco endereco = enderecoService.salvar(aluno.getEndereco());
@@ -57,7 +57,7 @@ public class AlunoController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity atualizar(@PathVariable("id") Long id, AlunoDTO dto) {
+    public ResponseEntity atualizar(@PathVariable("id") Long id, @RequestBody AlunoDTO dto) {
         if (!service.getAlunoById(id).isPresent()) {
             return new ResponseEntity("Aluno não encontrado", HttpStatus.NOT_FOUND);
         }

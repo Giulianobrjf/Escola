@@ -45,17 +45,8 @@ public class AvaliacaoController {
         return ResponseEntity.ok(avaliacao.map(AvaliacaoDTO::create));
     }
 
-    @GetMapping("{id}/turma")
-    public ResponseEntity getDisciplinas(@PathVariable("id") Long id) {
-        Optional<Avaliacao> avaliacao = service.getAvaliacaoById(id);
-        if (!avaliacao.isPresent()) {
-            return new ResponseEntity("Avaliação não encontrada", HttpStatus.NOT_FOUND);
-        }
-        return ResponseEntity.ok(avaliacao.get().getTurma());
-    }
-
     @PostMapping()
-    public ResponseEntity post(AvaliacaoDTO dto) {
+    public ResponseEntity post(@RequestBody AvaliacaoDTO dto) {
         try {
             Avaliacao avaliacao = converter(dto);
             avaliacao = service.salvar(avaliacao);
@@ -66,7 +57,7 @@ public class AvaliacaoController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity atualizar(@PathVariable("id") Long id, AvaliacaoDTO dto) {
+    public ResponseEntity atualizar(@PathVariable("id") Long id, @RequestBody AvaliacaoDTO dto) {
         if (!service.getAvaliacaoById(id).isPresent()) {
             return new ResponseEntity("Avaliação não encontrada", HttpStatus.NOT_FOUND);
         }

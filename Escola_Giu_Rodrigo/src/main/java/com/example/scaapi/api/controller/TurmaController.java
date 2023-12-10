@@ -51,7 +51,7 @@ public class TurmaController {
     }
 
     @PostMapping()
-    public ResponseEntity post(TurmaDTO dto) {
+    public ResponseEntity post(@RequestBody TurmaDTO dto) {
         try {
             Turma turma = converter(dto);
             turma = service.salvar(turma);
@@ -62,7 +62,7 @@ public class TurmaController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity atualizar(@PathVariable("id") Long id, TurmaDTO dto) {
+    public ResponseEntity atualizar(@PathVariable("id") Long id, @RequestBody TurmaDTO dto) {
         if (!service.getTurmaById(id).isPresent()) {
             return new ResponseEntity("Turma não encontrada", HttpStatus.NOT_FOUND);
         }

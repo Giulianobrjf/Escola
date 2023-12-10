@@ -63,7 +63,7 @@ public class CursoController {
             @ApiResponse(code = 201, message = "Curso salvo com sucesso"),
             @ApiResponse(code = 400, message = "Erro ao salvar o curso")
     })
-    public ResponseEntity post(CursoDTO dto) {
+    public ResponseEntity post(@RequestBody CursoDTO dto) {
         try {
             Curso curso = converter(dto);
             curso = service.salvar(curso);
@@ -74,7 +74,7 @@ public class CursoController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity atualizar(@PathVariable("id") Long id, CursoDTO dto) {
+    public ResponseEntity atualizar(@PathVariable("id") Long id, @RequestBody CursoDTO dto) {
         if (!service.getCursoById(id).isPresent()) {
             return new ResponseEntity("Curso não encontrado", HttpStatus.NOT_FOUND);
         }
