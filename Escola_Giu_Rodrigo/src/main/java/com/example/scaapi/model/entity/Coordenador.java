@@ -11,10 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Coordenador extends Professor{
-    private Long id;
+public class Coordenador extends Professor {
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
-
-
 }

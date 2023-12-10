@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CoordenadorDTO {
-    private Long id;
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
 

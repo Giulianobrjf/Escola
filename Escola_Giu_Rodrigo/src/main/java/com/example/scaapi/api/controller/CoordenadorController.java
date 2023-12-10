@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/professores")
+@RequestMapping("/api/v1/coordenadores")
 @RequiredArgsConstructor
 public class CoordenadorController {
 

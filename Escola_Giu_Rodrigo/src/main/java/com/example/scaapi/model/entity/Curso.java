@@ -26,5 +26,6 @@ public class Curso implements ICurso {
     private List<Disciplina> disciplinas;
 
     @ManyToOne
+    @JoinColumn(name = "coordenador_matricula") // Use the actual column name in your database
     private Coordenador coordenador;
 }

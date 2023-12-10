@@ -5,5 +5,5 @@ import com.example.scaapi.model.entity.Coordenador;
 public interface ICurso {
     public String getNome();
 
-    public Coordenador getCoordenador();
+    //public Coordenador getCoordenador();
 }
